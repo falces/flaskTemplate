@@ -5,4 +5,7 @@ class Users:
     def get_user(self, name, id):
         return {
             id: name,
+            "1212": "test",
+            "Nombre": name,
+            "ID": id,
         }
