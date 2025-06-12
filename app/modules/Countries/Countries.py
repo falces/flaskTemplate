@@ -4,17 +4,20 @@ class Countries:
     def __init__(self):
         pass
 
-    def getCountries(self):
+    def getCountries(self, resultsInFile=None):
         response = Requests.get(
             url='/countries',
             params=None
         )
         if response.status_code == 200:
-            Requests.createExcelFromAPIResponse(response.json(), 'countries.xlsx')
-            return {
-                'status': 'success',
-                'message': 'Countries retrieved successfully in Excel file',
-            }
+            if resultsInFile and resultsInFile == 'true':
+                Requests.createExcelFromAPIResponse(response.json(), 'countries.xlsx')
+                return {
+                    'status': 'success',
+                    'message': 'Countries retrieved successfully in Excel file',
+                }
+            else:
+                return response.json()
         else:
             return {
                 'status': 'error',
