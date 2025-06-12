@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, jsonify
 from .Countries import Countries
 from flasgger import swag_from
 

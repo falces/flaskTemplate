@@ -24,7 +24,14 @@ class Requests:
         json: dict = None,
         headers: dict = None
     ) -> requests.Response:
-        response = requests.post(url, data=data, json=json, headers=headers)
+        response = requests.post(
+            current_app.config['HOST'] + url,
+            data=data,
+            json=json,
+            headers={
+                'fulfilmentcrowd-api-key': current_app.config['API_KEY'],
+            }
+        )
         response.raise_for_status()
         return response
     

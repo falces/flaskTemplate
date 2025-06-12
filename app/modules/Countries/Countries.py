@@ -9,14 +9,11 @@ class Countries:
             url='/countries',
             params=None
         )
-        console = response.json()
         if response.status_code == 200:
             Requests.createExcelFromAPIResponse(response, 'countries.xlsx')
             return {
                 'status': 'success',
-                'message': 'Countries data retrieved successfully',
-                'data': console,
-                'code': response.status_code,
+                'message': 'Countries retrieved successfully in Excel file',
             }
         else:
             return {
