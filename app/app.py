@@ -1,6 +1,8 @@
 from flask import Flask
 from config.routes.routes import routes
 from flasgger import Swagger
+import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 swagger = Swagger(app, template={
@@ -10,6 +12,12 @@ swagger = Swagger(app, template={
         "version": "1.0.0"
     }
 })
+
+load_dotenv()
+app.config.update(
+    HOST=os.getenv('HOST'),
+    API_KEY=os.getenv('API_KEY'),
+)
 
 app.register_blueprint(routes)
 

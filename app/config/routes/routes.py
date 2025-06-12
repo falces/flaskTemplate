@@ -16,4 +16,4 @@ def index():
             examples:
                 application/json: "Hello, World!"
     """
-    return redirect("http://localhost:8001/v1/users/2?name=Javi", code=302)
+    # return redirect("http://localhost:8001/v1/users/2?name=Javi", code=302)
