@@ -37,15 +37,11 @@ class Requests:
     
     @staticmethod
     def createExcelFromAPIResponse(
-        response: requests.Response,
+        data: dict,
         filename: str
     ) -> None:
 
         import pandas as pd
-        
-        if response.status_code == 200:
-            data = response.json()
-            df = pd.DataFrame(data)
-            df.to_excel('.' + '/output/' + filename, index=False)
-        else:
-            raise Exception(f"Failed to create Excel file: {response.text}")
+
+        df = pd.DataFrame(data)
+        df.to_excel('.' + '/output/' + filename, index=False)

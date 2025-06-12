@@ -3,6 +3,8 @@ from config.routes.routes import routes
 from flasgger import Swagger
 import os
 from dotenv import load_dotenv
+import traceback
+import json
 
 app = Flask(__name__)
 swagger = Swagger(app, template={
@@ -13,6 +15,18 @@ swagger = Swagger(app, template={
     }
 })
 
+@app.errorhandler(Exception)
+def handle_exception(e):
+    response = e.get_response()
+    response.data = json.dumps({
+        "code": e.code,
+        "name": e.name,
+        "description": e.description,
+        "traceback": traceback.format_exc()
+    })
+    response.content_type = "application/json"
+    return response.json, response.status_code
+    
 load_dotenv()
 app.config.update(
     HOST=os.getenv('HOST'),
