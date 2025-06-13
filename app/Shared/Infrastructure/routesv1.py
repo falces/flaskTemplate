@@ -1,6 +1,6 @@
 from flask import Blueprint
-from app.Infrastructure.User.routes import usersRoutes
+from Infrastructure.Users.UsersController import usersController
 
 routesv1 = Blueprint('v1', __name__)
 
-routesv1.register_blueprint(usersRoutes, url_prefix='/users')
+routesv1.register_blueprint(usersController, url_prefix='/users')

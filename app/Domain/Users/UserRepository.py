@@ -1,6 +1,16 @@
-from app.Shared.Domain.EntityRepository import EntityRepository
+from abc import ABC, abstractmethod
+from Users import Users
 
-class UserRepository:
-    def __init__(self, EntityRepository):
-        self.entity_class = __class__.__name__
-        self.repository = EntityRepository(self.entity_class)
+class UserRepository(ABC):
+    
+    @abstractmethod
+    def save(self, user: Users):
+        pass
+        
+    @abstractmethod
+    def findById(self, userId):
+        pass
+    
+    @abstractmethod
+    def findAll(self):
+        pass

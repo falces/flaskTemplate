@@ -1,5 +1,5 @@
 from flask import Flask
-from app.Shared.Infrastructure.routes import routes
+from Shared.Infrastructure.routes import routes
 from flasgger import Swagger
 import os
 from dotenv import load_dotenv

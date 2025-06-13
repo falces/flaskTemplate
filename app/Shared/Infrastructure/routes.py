@@ -1,6 +1,6 @@
 from flask import Blueprint
 # from flask import redirect
-from app.Shared.Infrastructure.routesv1 import routesv1
+from .routesv1 import routesv1
 
 routes = Blueprint('routes', __name__)
 
